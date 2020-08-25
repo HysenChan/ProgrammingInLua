@@ -39,9 +39,13 @@
 -- print(max)  --2
 
 --操作符not永远只返回true或false
-print(not nil)  --ture
-print(not false) --true
-print(not 0)    --false
-print(not not 0)    --true
-print(not not nil) --false
+-- print(not nil)  --ture
+-- print(not false) --true
+-- print(not 0)    --false
+-- print(not not 0)    --true
+-- print(not not nil) --false
+
+print("Hello" .. "World")   -->Hello World
+print(0 .. 1)   -->01
+print(0 .. "H" .. "W")  --0HW
 
