@@ -51,7 +51,16 @@
 -- print(0 .. "H" .. "W")  --0HW
 
 --不会对原操作数进行修改
-a="Hello"
-print(a .. "World") --Hello World
-print(a)    --Hello
+-- a="Hello"
+-- print(a .. "World") --Hello World
+-- print(a)    --Hello
+
+--"^"和".."是”右结合“的，如果不确定优先级，可以使用括号来达到期望运算次序
+x=2;y=2;z=3
+
+print(-x^2) --4.0
+print(-(x^2))   --4.0
+
+print(x^y^z)    --256.0
+print(x^(y^z))  --256.0
 
