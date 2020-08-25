@@ -75,16 +75,30 @@
 -- print(z.f[1])   --another field
 -- w.x=nil --删除a["x"]
 
-list = nil
-for line in io.lines() do
-    list = {
-        next = list,
-        value = line
-    }
-end
+-- list = nil
+-- for line in io.lines() do
+--     list = {
+--         next = list,
+--         value = line
+--     }
+-- end
 
-local l = list
-while l do
-    print(l.value)
-    l = l.next
-end
+-- local l = list
+-- while l do
+--     print(l.value)
+--     l = l.next
+-- end
+
+polyline={
+    color="blue",thickness=2,
+    npoints=4,
+    {x=0,y=0},
+    {x=-10,y=0},
+    {x=-10,y=2},
+    {x=30,y=1}
+}
+
+print(polyline.color) --blue
+print(polyline[1].y)    --0
+print(polyline[2].x)    --10
+print(polyline[4].x)    --30
