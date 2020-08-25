@@ -28,13 +28,20 @@
 -- print(0 or 2)   --0 --or:第一个为真才返回0，否则返回2
 -- print(a or 2)   --2
 
-x=1;y=2
-print(x==x or v)
---等价于
-if not x then
-    x=v
-end
+-- x=1;y=2
+-- print(x==x or v)
+-- --等价于
+-- if not x then
+--     x=v
+-- end
 
-max=(x>y) and x or y
-print(max)  --2
+-- max=(x>y) and x or y
+-- print(max)  --2
+
+--操作符not永远只返回true或false
+print(not nil)  --ture
+print(not false) --true
+print(not 0)    --false
+print(not not 0)    --true
+print(not not nil) --false
 
