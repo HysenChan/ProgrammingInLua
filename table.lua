@@ -36,24 +36,30 @@
 -- print(a.y)  --a["y"]
 
 --读取10行内容，并存储到一个table中
+-- a={}
+-- for i = 1, 10 do
+--     a[i]=io.read()
+-- end
+
+-- --#a来获取到a的长度，打印所有的行
+-- for i = 1, #a do
+--     print(a[i])
+-- end
+
+-- print(a[#a])    --打印列表a的最后一个值
+-- a[#a]=nil   --删除最后一个值
+-- a[#a+1]=v   --将v添加到列表末尾
+-- print(a[#a+1])
+
+-- --另一种方法读取一个文件的前10行
+-- b={}
+-- for i = 1, 10 do
+--     b[#b+1] = io.read();    --#b是因为开始时b的长度为0，所以[#b+1]与上面a[1]是一致的
+-- end
+
+--'#'长度操作符和table.maxn
 a={}
-for i = 1, 10 do
-    a[i]=io.read()
-end
-
---#a来获取到a的长度，打印所有的行
-for i = 1, #a do
-    print(a[i])
-end
-
-print(a[#a])    --打印列表a的最后一个值
-a[#a]=nil   --删除最后一个值
-a[#a+1]=v   --将v添加到列表末尾
-print(a[#a+1])
-
---另一种方法读取一个文件的前10行
-b={}
-for i = 1, 10 do
-    b[#b+1] = io.read();    --#b是因为开始时b的长度为0，所以[#b+1]与上面a[1]是一致的
-end
+a[10000]=1
+print(#a)
+print(table.maxn(a))
 
