@@ -89,16 +89,34 @@
 --     l = l.next
 -- end
 
-polyline={
-    color="blue",thickness=2,
-    npoints=4,
-    {x=0,y=0},
-    {x=-10,y=0},
-    {x=-10,y=2},
-    {x=30,y=1}
+-- polyline={
+--     color="blue",thickness=2,
+--     npoints=4,
+--     {x=0,y=0},
+--     {x=-10,y=0},
+--     {x=-10,y=2},
+--     {x=30,y=1}
+-- }
+
+-- print(polyline.color) --blue
+-- print(polyline[1].y)    --0
+-- print(polyline[2].x)    --10
+-- print(polyline[4].x)    --30
+
+opnames={
+    ["+"]="add",
+    ["-"]="sub",
+    ["*"]="mul",
+    ["/"]="div",
 }
 
-print(polyline.color) --blue
-print(polyline[1].y)    --0
-print(polyline[2].x)    --10
-print(polyline[4].x)    --30
+i=20;s="-"
+a={
+    [i+0]=s,
+    [i+1]=s..s,
+    [i+2]=s..s..s
+}
+
+print(opnames[s])   -->sub
+print(opnames["/"]) -->div
+print(a[22])    -->---
