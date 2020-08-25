@@ -23,8 +23,18 @@
 -- print(isturnback(190))
 
 --只有false和nil为假，其余都为真
-print(0 and 2)  --2 --and:第一个为假才返回0，否则返回2
-print(a and 2)  --nil
-print(0 or 2)   --0 --or:第一个为真才返回0，否则返回2
-print(a or 2)   --2
+-- print(0 and 2)  --2 --and:第一个为假才返回0，否则返回2
+-- print(a and 2)  --nil
+-- print(0 or 2)   --0 --or:第一个为真才返回0，否则返回2
+-- print(a or 2)   --2
+
+x=1;y=2
+print(x==x or v)
+--等价于
+if not x then
+    x=v
+end
+
+max=(x>y) and x or y
+print(max)  --2
 
