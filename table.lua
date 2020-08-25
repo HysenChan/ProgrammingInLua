@@ -58,8 +58,24 @@
 -- end
 
 --'#'长度操作符和table.maxn
+-- a={}
+-- a[10000]=1
+-- print(#a)
+-- print(table.maxn(a))
+
+--区分索引值 10  “10”  “+10”
+i=10;j="10";k="+10";l="010"
 a={}
-a[10000]=1
-print(#a)
-print(table.maxn(a))
+a[i]="one value"
+a[j]="another value"
+a[k]="yet another value"
+a[l]="other yet another value"
+print(a[j]) --another value
+print(a[k]) --yet another value
+print(a[l]) --other yet another value
+print("--------")
+print(a[tonumber(j)])   --one value
+print(a[tonumber(k)])   --one value
+print(a[tonumber(l)])   --one value
+
 
