@@ -65,12 +65,26 @@
 -- print(x^(y^z))  --256.0
 
 --table构造式
-w={x=0,y=0,lable="console"}
-z={math.sin(0),math.sin(1),math.sin(2)}
-w[1]="another field"    --添加key1到table w
-z.f=w   --添加key "f"到table z
-print(w[x]) --nil
-print(w["x"])   --0
-print(w[1]) --another field
-print(z.f[1])   --another field
-w.x=nil --删除a["x"]
+-- w={x=0,y=0,lable="console"}
+-- z={math.sin(0),math.sin(1),math.sin(2)}
+-- w[1]="another field"    --添加key1到table w
+-- z.f=w   --添加key "f"到table z
+-- print(w[x]) --nil
+-- print(w["x"])   --0
+-- print(w[1]) --another field
+-- print(z.f[1])   --another field
+-- w.x=nil --删除a["x"]
+
+list = nil
+for line in io.lines() do
+    list = {
+        next = list,
+        value = line
+    }
+end
+
+local l = list
+while l do
+    print(l.value)
+    l = l.next
+end
