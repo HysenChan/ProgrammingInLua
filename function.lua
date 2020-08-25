@@ -45,7 +45,13 @@
 -- print(not not 0)    --true
 -- print(not not nil) --false
 
-print("Hello" .. "World")   -->Hello World
-print(0 .. 1)   -->01
-print(0 .. "H" .. "W")  --0HW
+--使用 .. 进行拼接字符串
+-- print("Hello" .. "World")   -->Hello World
+-- print(0 .. 1)   -->01
+-- print(0 .. "H" .. "W")  --0HW
+
+--不会对原操作数进行修改
+a="Hello"
+print(a .. "World") --Hello World
+print(a)    --Hello
 
