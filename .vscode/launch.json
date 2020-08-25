@@ -9,7 +9,10 @@
             "type": "lua",
             "request": "launch",
             "name": "Lua debug",
-            "program": "${workspaceFolder}/main.lua"
+            "stopOnEntry": true,
+            "program": "${workspaceFolder}/string.lua",
+            "console": "integratedTerminal",
+            "outputCapture": []
         }
     ]
 }
