@@ -56,11 +56,21 @@
 -- print(a)    --Hello
 
 --"^"和".."是”右结合“的，如果不确定优先级，可以使用括号来达到期望运算次序
-x=2;y=2;z=3
+-- x=2;y=2;z=3
 
-print(-x^2) --4.0
-print(-(x^2))   --4.0
+-- print(-x^2) --4.0
+-- print(-(x^2))   --4.0
 
-print(x^y^z)    --256.0
-print(x^(y^z))  --256.0
+-- print(x^y^z)    --256.0
+-- print(x^(y^z))  --256.0
 
+--table构造式
+w={x=0,y=0,lable="console"}
+z={math.sin(0),math.sin(1),math.sin(2)}
+w[1]="another field"    --添加key1到table w
+z.f=w   --添加key "f"到table z
+print(w[x]) --nil
+print(w["x"])   --0
+print(w[1]) --another field
+print(z.f[1])   --another field
+w.x=nil --删除a["x"]
