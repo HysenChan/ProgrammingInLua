@@ -173,22 +173,39 @@
 -- local foo=foo
 
 --控制结构
-local a=-1
-if a<0 then
-    a=0
+-- local a=-1
+-- if a<0 then
+--     a=0
+-- end
+-- print(a)    --0
+
+-- function findMin(a,b)
+--     if a<b then
+--         return a
+--     else
+--         return b
+--     end
+-- end
+
+-- local a,b=1,2
+-- local min=findMin(a,b)
+
+-- print(min)  --1
+
+--if..then..elseif..then..end的使用
+op=io.read()    --直接输入+ - * / ；不需要加双引号“”
+local a,b=2,3
+if op=="+" then
+    r=a+b
+elseif op=="-" then
+    r=a-b
+elseif op=="*" then
+    r=a*b
+elseif op=="/" then
+    r=a/b
+else
+    error("invalid operation")
 end
-print(a)    --0
 
-function findMin(a,b)
-    if a<b then
-        return a
-    else
-        return b
-    end
-end
-
-local a,b=1,2
-local min=findMin(a,b)
-
-print(min)  --1
+print(r)
 
