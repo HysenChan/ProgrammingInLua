@@ -193,19 +193,28 @@
 -- print(min)  --1
 
 --if..then..elseif..then..end的使用
-op=io.read()    --直接输入+ - * / ；不需要加双引号“”
-local a,b=2,3
-if op=="+" then
-    r=a+b
-elseif op=="-" then
-    r=a-b
-elseif op=="*" then
-    r=a*b
-elseif op=="/" then
-    r=a/b
-else
-    error("invalid operation")
-end
+-- op=io.read()    --直接输入+ - * / ；不需要加双引号“”
+-- local a,b=2,3
+-- if op=="+" then
+--     r=a+b
+-- elseif op=="-" then
+--     r=a-b
+-- elseif op=="*" then
+--     r=a*b
+-- elseif op=="/" then
+--     r=a/b
+-- else
+--     error("invalid operation")
+-- end
 
-print(r)
+-- print(r)
+
+--while .. do .. end语句
+local a={}
+local i,j=1,5
+while i<j do
+    a[i]=i
+    print(a[i])
+    i=i+1
+end
 
