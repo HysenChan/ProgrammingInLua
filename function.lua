@@ -95,6 +95,7 @@ print(foo2(),1)     --a     1
 
 ]]
 
+--[[
 --无返回值
 function foo0()
     
@@ -136,4 +137,30 @@ end
 t={7,5,3,9,10}
 u,v,w,x,y,z=unpack(t,1)
 print(u,v,w,x,y,z)  --7,5,3,9,10,nil
+
+]]
+
+--变长参数
+--返回所有参数的总和
+function add(...)
+    local s=0
+    for i,v in ipairs{...} do
+        s=s+v
+    end
+    return s
+end
+
+print(add(2,4,5,6,8,20))    --45
+
+function fwrite(fmt,...)
+    return io.write(string.format(fmt,...))
+end
+
+fwrite("a") --a
+fwrite("%d%d",4,5)  --45
+
+--遍历一个函数的所有变长参数
+for i = 1, select('#',...) do
+    local arg=select(i,...) --得到第i个参数
+end
 
