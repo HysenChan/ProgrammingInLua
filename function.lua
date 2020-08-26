@@ -122,15 +122,41 @@
 -- print(opnames["/"]) -->div
 -- print(a[22])    -->---
 
-a,b=10,20
-print(a,b)  --10    20
-a,b=b,a --交换a与b
-print(a,b)  --20    10
+--多重赋值的使用
+-- a,b=10,20
+-- print(a,b)  --10    20
+-- a,b=b,a --交换a与b
+-- print(a,b)  --20    10
 
-x,y,z=0,1
-print(x,y,z)    --0   1  nil
-x,y=4,5,6
-print(x,y,z)    --4   5  nil
-x,y,z=10
-print(x,y,z)    --10   nil   nil
+-- x,y,z=0,1
+-- print(x,y,z)    --0   1  nil
+-- x,y=4,5,6
+-- print(x,y,z)    --4   5  nil
+-- x,y,z=10
+-- print(x,y,z)    --10   nil   nil
+
+--局部变量与块（block）
+i=1 --全局变量
+local j=2   --局部变量
+
+x=10
+local i=1
+
+while i<=x do
+    local x=i*2
+    print(x)
+    i=i+1
+end
+
+print("----------")
+
+if i>10 then
+    local x
+    x=20
+    print(x+2)  --22
+else
+    print(x)
+end
+
+print(x)    --10
 
