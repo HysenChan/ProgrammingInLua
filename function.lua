@@ -210,11 +210,24 @@
 -- print(r)
 
 --while .. do .. end语句
-local a={}
-local i,j=1,5
-while i<j do
-    a[i]=i
-    print(a[i])
-    i=i+1
-end
+-- local a={}
+-- local i,j=1,5
+-- while i<j do
+--     a[i]=i
+--     print(a[i])
+--     i=i+1
+-- end
+
+--repeat .. until .. 语句
+local a,b=1,5
+repeat
+    print(a)    --1 2 3 4 5
+    a=a+1
+until a>b
+
+--打印输入的第一行不为空的内容
+repeat
+    line=io.read()
+until line~=""
+print(line)
 
