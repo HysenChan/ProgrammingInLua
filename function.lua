@@ -44,6 +44,7 @@
 
 -- incCount(1)
 
+--[[
 --多重返回值
 s,e=string.find("hello Lua user","Lua")
 print(s,e)  --7     9
@@ -91,4 +92,48 @@ x,y=foo0(),20,30
 print(x,y)  --nil   20
 --当函数作为另一个函数的实参时，其返回数量调整为1，即   a
 print(foo2(),1)     --a     1
+
+]]
+
+--无返回值
+function foo0()
+    
+end
+
+--返回1个结果
+function foo1()
+    return "a"
+end
+
+--返回2个结果
+function foo2()
+    return "a","b"
+end
+
+--table构造式可以完整地接收一个函数调用的所有结果
+t={foo0()}  --
+t={foo1()}  --1 a
+t={foo2()}  --1 a   2  b
+t={foo0(),foo2(),4} --2 a   3   4
+
+for i, v in pairs(t) do
+    print(i,v)
+end
+
+--unpack的使用
+print(table.unpack{10,20,30})   --10    20  30
+a,b=table.unpack{10,20,30}
+print(a,b)  --10    20
+
+--通过递归拿到t中的所有元素
+function unpack(t,i)
+    i=i or 1
+    if t[i] then
+        return t[i],unpack(t,i+1)
+    end
+end
+
+t={7,5,3,9,10}
+u,v,w,x,y,z=unpack(t,1)
+print(u,v,w,x,y,z)  --7,5,3,9,10,nil
 
