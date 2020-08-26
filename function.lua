@@ -231,11 +231,44 @@
 -- until line~=""
 -- print(line)
 
-local x=100
-local sqr=x/2
-repeat
-    sqr=(sqr+x/sqr)/2
-    local error=math.abs(sqr^2-x)
-until error<x/10000     --此处还能访问到local的error
+-- local x=100
+-- local sqr=x/2
+-- repeat
+--     sqr=(sqr+x/sqr)/2
+--     local error=math.abs(sqr^2-x)
+-- until error<x/10000     --此处还能访问到local的error
 
-print(sqr)
+-- print(sqr)
+
+--数字型for
+for i = 12,15 do    --默认步长为1
+    print(i)
+end
+
+max =i
+print(max)  --nil
+
+for i = 1, 10, 2 do     --指定后步长为2
+    print(i)
+end
+
+for i = 1, math.huge do     --不想给循环设置上限可以使用常量：math.huge
+    if (0.3*i^3-20*i^2-500>=0) then
+        print(i)
+        break
+    end
+end
+
+--在一个列表中查找一个值
+local a={1,3,-5,4,3,7}
+local found=nil
+for i = 1, #a do
+    if a[i]<0 then
+        found=i
+        a[i]=nil
+        break
+    end
+end
+
+print(found)
+print(a[found])
