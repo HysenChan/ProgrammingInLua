@@ -136,27 +136,39 @@
 -- print(x,y,z)    --10   nil   nil
 
 --局部变量与块（block）
-i=1 --全局变量
-local j=2   --局部变量
+-- i=1 --全局变量
+-- local j=2   --局部变量
 
-x=10
-local i=1
+-- x=10
+-- local i=1
 
-while i<=x do
-    local x=i*2
-    print(x)
-    i=i+1
+-- while i<=x do
+--     local x=i*2
+--     print(x)
+--     i=i+1
+-- end
+
+-- print("----------")
+
+-- if i>10 then
+--     local x
+--     x=20
+--     print(x+2)  --22
+-- else
+--     print(x)
+-- end
+
+-- print(x)    --10
+
+local a,b=1,2
+if a<b then
+    print(a)    --1
+    local a
+    print(a)    --nil
 end
+print(a,b)  --1 2
 
-print("----------")
-
-if i>10 then
-    local x
-    x=20
-    print(x+2)  --22
-else
-    print(x)
-end
-
-print(x)    --10
+--创建了一个局部变量foo，并将全局变量foo的初始化它；
+--目的：先保存一份局部foo的值，防止后续其他函数改变了全局foo的值
+local foo=foo
 
