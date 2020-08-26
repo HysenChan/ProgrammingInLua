@@ -279,6 +279,8 @@
 --迭代数组元素的（ipairs）
 --迭代字符串中单词的（string.gmatch)
 
+--[[
+
 --打印数组a的所有值
 local a={4,3,5,2,6}
 for key, value in pairs(a) do
@@ -315,3 +317,29 @@ end
 x="Thursday"
 print(days[4])
  print(revDays[x])   --4
+
+--]]
+
+--break和return的使用
+local v=2;a={1,2}
+local i=1
+while a[i] do
+    if a[i]==v then
+        break
+    end
+    i=i+1
+end
+
+print(i)
+
+--do return end就是最后一条语句了
+--return后面不能再执行代码了，但是可以打印print()
+function foo()
+    print("foo")
+    do return end
+    print("do return end")
+    return
+    print("return")
+end
+
+foo()
