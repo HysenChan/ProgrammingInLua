@@ -10,6 +10,7 @@ sin(10,20)  --10,20
 
 ]]
 
+--[[
 network={
     {name="grauna",IP="210,26.30.34"},
     {name="arraial",IP="210,26.30.23"},
@@ -37,4 +38,18 @@ end)
 
 print("-----Sort-----")
 printNetwork()
+
+]]
+
+--高阶函数
+function derivative(f,delta)
+    delta=delta or 1e-4
+    return function (x)
+        print((f(x+delta)-f(x))/delta)
+        return (f(x+delta)-f(x))/delta
+    end
+end
+
+c=derivative(math.sin)
+print(math.cos(10),c(10))
 
