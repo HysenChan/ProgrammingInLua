@@ -39,8 +39,6 @@ end)
 print("-----Sort-----")
 printNetwork()
 
-]]
-
 --高阶函数
 function derivative(f,delta)
     delta=delta or 1e-4
@@ -52,4 +50,58 @@ end
 
 c=derivative(math.sin)
 print(math.cos(10),c(10))
+
+]]
+
+--closure闭合函数
+names={"Peter","Paul","Mary"}
+grades={Mary=10,Paul=7,Peter=8}
+
+function soryByGrade(names,grades)
+    table.sort(names,function (n1,n2)
+        return grades[n1]<grades[n2]    --比较年级
+    end)
+end
+
+soryByGrade(names,grades)
+
+for key, value in pairs(names) do
+    print(key,value)
+end
+
+function newCounter()
+    local i=0
+    return function ()
+        i=i+1
+        return i
+    end
+end
+
+--c1和c2是同一个函数所创建的两个不同的colsure，它们各自拥有局部变量i的独立实例
+c1=newCounter()
+print(c1()) --1
+print(c1()) --2
+c2=newCounter()
+print(c2()) --1
+print(c1()) --3
+print(c2()) --2
+
+-- function digitButton(digit)
+--     return Button{
+--         label=tostring(digit),
+--         action=function ()
+--             add_to_display(digit)
+--         end
+--     }
+-- end
+
+--重写math.sin使用度来表示
+print(math.sin(20)) --原型  0.91294525072763
+oldSin=math.sin
+math.sin=function (x)
+    return oldSin(x*math.pi/180)
+end
+
+print(math.sin(20)) --度   0.34202014332567
+print(oldSin(20))   --弧度  0.91294525072763
 
