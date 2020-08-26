@@ -140,6 +140,7 @@ print(u,v,w,x,y,z)  --7,5,3,9,10,nil
 
 ]]
 
+--[[
 --变长参数
 --返回所有参数的总和
 function add(...)
@@ -164,3 +165,44 @@ for i = 1, select('#',...) do
     local arg=select(i,...) --得到第i个参数
 end
 
+]]
+
+--具名实参
+-- rename{old="temp.lua",new="temp1.lua"}
+
+-- function rename(arg)
+--     return os.rename(arg.old,arg.new)
+-- end
+
+w=Window{
+    x=0,
+    y=0,
+    width=300,
+    height=200,
+    titl="Lua",
+    background="blue",
+    border=true
+}
+
+function Window(options)
+    --检查必要的参数
+    if type(options.title)~="string" then
+        error("no title")
+    elseif type(options.width)~="number" then
+        error("no width")
+    elseif type(options.height)~="number" then
+        error("no height")
+    end
+
+    --其他参数都是可选的
+    _Window(
+        options.title,
+        options.x or 0,
+        options.y or 0,
+        options.width,options.height,
+        options.background or "White",
+        options.border
+    )
+end
+
+print(Window(w))
