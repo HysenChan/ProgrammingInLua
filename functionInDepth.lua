@@ -108,6 +108,7 @@ print(oldSin(20))   --弧度  0.91294525072763
 
 ]]
 
+--[[
 --非全局的函数
 --方式1：
 Lib={}
@@ -137,3 +138,59 @@ function Lib.goo(x,y)
     return x-y
 end
 
+]]
+
+--正确的尾调用
+function f(x)
+    return g(x)
+end
+--尾调用不会耗费栈空间，所以一个程序可以拥有无数嵌套的“尾调用
+function foo(n)
+    if n>0 then
+        return foo(n-1) --尾调用
+    end
+end
+
+print(foo(2))   --无输出，因为是尾调用
+
+function room1()
+    local move=io.read()
+    if move=="south" then
+        return room3()
+    elseif move=="east" then
+        return room2()
+    else
+        print("invalid move")
+        return room1()
+    end
+end
+
+function room2()
+    local move=io.read()
+    if move=="south" then
+        return room4()
+    elseif move=="west" then
+        return room1()
+    else
+        print("invalid move")
+        return room2()
+    end
+end
+
+function room3()
+    local move=io.read()
+    if move=="north" then
+        return room1()
+    elseif move=="east" then
+        return room4()
+    else
+        print("invalid move")
+        return room3()
+    end
+end
+
+function room4()
+    print("Congratulations!!")
+end
+
+room1()
