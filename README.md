@@ -11,4 +11,6 @@
 - **第四章**    
   - 1. statement.lua
 - **第五章**    
-  - 1. funciton.lua
+  - 1. function.lua
+- **第六章**
+  - 1. functionInDepth.lua
