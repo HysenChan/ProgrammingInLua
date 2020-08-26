@@ -160,15 +160,35 @@
 
 -- print(x)    --10
 
-local a,b=1,2
-if a<b then
-    print(a)    --1
-    local a
-    print(a)    --nil
-end
-print(a,b)  --1 2
+-- local a,b=1,2
+-- if a<b then
+--     print(a)    --1
+--     local a
+--     print(a)    --nil
+-- end
+-- print(a,b)  --1 2
 
---创建了一个局部变量foo，并将全局变量foo的初始化它；
---目的：先保存一份局部foo的值，防止后续其他函数改变了全局foo的值
-local foo=foo
+-- --创建了一个局部变量foo，并将全局变量foo的初始化它；
+-- --目的：先保存一份局部foo的值，防止后续其他函数改变了全局foo的值
+-- local foo=foo
+
+--控制结构
+local a=-1
+if a<0 then
+    a=0
+end
+print(a)    --0
+
+function findMin(a,b)
+    if a<b then
+        return a
+    else
+        return b
+    end
+end
+
+local a,b=1,2
+local min=findMin(a,b)
+
+print(min)  --1
 
