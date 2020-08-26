@@ -89,20 +89,20 @@
 --     l = l.next
 -- end
 
-polyline={
-    color="blue",thickness=2,
-    npoints=4,
-    {x=0,y=0},
-    {x=-10,y=0},
-    {x=-10,y=2},
-    {x=30,y=1}
-}
+-- polyline={
+--     color="blue",thickness=2,
+--     npoints=4,
+--     {x=0,y=0},
+--     {x=-10,y=0},
+--     {x=-10,y=2},
+--     {x=30,y=1}
+-- }
 
-print(polyline.color) --blue
-print(polyline["color"])    --blue
-print(polyline[1].y)    --0
-print(polyline[2].x)    --10
-print(polyline[4].x)    --30
+-- print(polyline.color) --blue
+-- print(polyline["color"])    --blue
+-- print(polyline[1].y)    --0
+-- print(polyline[2].x)    --10
+-- print(polyline[4].x)    --30
 
 -- opnames={
 --     ["+"]="add",
@@ -121,4 +121,16 @@ print(polyline[4].x)    --30
 -- print(opnames[s])   -->sub
 -- print(opnames["/"]) -->div
 -- print(a[22])    -->---
+
+a,b=10,20
+print(a,b)  --10    20
+a,b=b,a --交换a与b
+print(a,b)  --20    10
+
+x,y,z=0,1
+print(x,y,z)    --0   1  nil
+x,y=4,5,6
+print(x,y,z)    --4   5  nil
+x,y,z=10
+print(x,y,z)    --10   nil   nil
 
