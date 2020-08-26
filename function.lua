@@ -219,15 +219,23 @@
 -- end
 
 --repeat .. until .. 语句
-local a,b=1,5
-repeat
-    print(a)    --1 2 3 4 5
-    a=a+1
-until a>b
+-- local a,b=1,5
+-- repeat
+--     print(a)    --1 2 3 4 5
+--     a=a+1
+-- until a>b
 
---打印输入的第一行不为空的内容
-repeat
-    line=io.read()
-until line~=""
-print(line)
+-- --打印输入的第一行不为空的内容
+-- repeat
+--     line=io.read()
+-- until line~=""
+-- print(line)
 
+local x=100
+local sqr=x/2
+repeat
+    sqr=(sqr+x/sqr)/2
+    local error=math.abs(sqr^2-x)
+until error<x/10000     --此处还能访问到local的error
+
+print(sqr)
