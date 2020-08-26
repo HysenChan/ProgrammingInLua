@@ -53,6 +53,7 @@ print(math.cos(10),c(10))
 
 ]]
 
+--[[
 --closure闭合函数
 names={"Peter","Paul","Mary"}
 grades={Mary=10,Paul=7,Peter=8}
@@ -104,4 +105,35 @@ end
 
 print(math.sin(20)) --度   0.34202014332567
 print(oldSin(20))   --弧度  0.91294525072763
+
+]]
+
+--非全局的函数
+--方式1：
+Lib={}
+Lib.foo=function (x,y)
+    return x+y
+end
+Lib.goo=function (x,y)
+    return x-y
+end
+
+--方式2：
+Lib={
+    foo=function (x,y)
+        return x+y
+    end,
+    goo=function (x,y)
+        return x-y
+    end
+}
+
+--方式3：
+Lib={}
+function Lib.foo(x,y)
+    return x+y
+end
+function Lib.goo(x,y)
+    return x-y
+end
 
