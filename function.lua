@@ -241,34 +241,77 @@
 -- print(sqr)
 
 --数字型for
-for i = 12,15 do    --默认步长为1
-    print(i)
+-- for i = 12,15 do    --默认步长为1
+--     print(i)
+-- end
+
+-- max =i
+-- print(max)  --nil
+
+-- for i = 1, 10, 2 do     --指定后步长为2
+--     print(i)
+-- end
+
+-- for i = 1, math.huge do     --不想给循环设置上限可以使用常量：math.huge
+--     if (0.3*i^3-20*i^2-500>=0) then
+--         print(i)
+--         break
+--     end
+-- end
+
+-- --在一个列表中查找一个值
+-- local a={1,3,-5,4,3,7}
+-- local found=nil
+-- for i = 1, #a do
+--     if a[i]<0 then
+--         found=i
+--         a[i]=nil
+--         break
+--     end
+-- end
+
+-- print(found)
+-- print(a[found])
+
+--泛型for
+--迭代文件中每行的（io.lines)
+--迭代table元素的（pairs）
+--迭代数组元素的（ipairs）
+--迭代字符串中单词的（string.gmatch)
+
+--打印数组a的所有值
+local a={4,3,5,2,6}
+for key, value in pairs(a) do
+    print("key=",key,"value=",value)
 end
 
-max =i
-print(max)  --nil
-
-for i = 1, 10, 2 do     --指定后步长为2
-    print(i)
+for key in ipairs(a) do
+    print("k=",key)
 end
 
-for i = 1, math.huge do     --不想给循环设置上限可以使用常量：math.huge
-    if (0.3*i^3-20*i^2-500>=0) then
-        print(i)
-        break
-    end
+--只会输出从1开始的key到连续的最大值，不存在key为1或者从1开始遇到断开的key，将不输出或者停止输出
+local t={[5]=5,[1]=1,[4]=4,[2]=2}
+for key, value in ipairs(t) do
+    print(key,value)
 end
 
---在一个列表中查找一个值
-local a={1,3,-5,4,3,7}
-local found=nil
-for i = 1, #a do
-    if a[i]<0 then
-        found=i
-        a[i]=nil
-        break
-    end
+local str="Hello World from Lua"
+for w in string.gmatch(str,"%a+") do
+    print(w)
 end
 
-print(found)
-print(a[found])
+days={"Monday","Tuesday","Wednessday","Thursday","Friday","Saturday","Sunday"}
+
+--方法一：
+-- revDays={["Monday"]=1,["Tuesday"]=2,["Wednessday"]=3,["Thursday"]=4,["Friday"]=5,["Saturday"]=6,["Sunday"]=7,}
+
+--方法二：
+--利用days的key作为revDays的key快速地赋值revDays表
+revDays={}
+for key, value in pairs(days) do
+    revDays[value]=key
+end
+
+x="Thursday"
+print(days[4])
+ print(revDays[x])   --4
