@@ -16,3 +16,5 @@
   - 1. functionInDepth.lua
 - **第七章** 迭代器与泛型for
   - 1. iterator.lua
+- **第八章** 编译、执行与错误
+  - 1. compile.lua
