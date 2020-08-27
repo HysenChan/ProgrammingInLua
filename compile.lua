@@ -5,6 +5,7 @@
 --     return f()
 -- end
 
+--[[
 --loadstring()函数：用来执行外部代码，返回值是function，如果load失败，则返回nil
 i=1
 local i=0
@@ -37,3 +38,10 @@ foo2=loadfile("compileTest.lua")    --完成编译
 print(foo1) --nill
 foo2()  --定义
 foo1("ok")  --ok
+
+]]
+
+--代码
+local path="/usr/local/lib/lua/5.1/socket.so"
+local f=package.loadlib(path,"luaopen_socket")
+
