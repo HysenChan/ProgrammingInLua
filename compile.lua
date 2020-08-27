@@ -41,7 +41,24 @@ foo1("ok")  --ok
 
 ]]
 
+--[[
 --代码
 local path="/usr/local/lib/lua/5.1/socket.so"
 local f=package.loadlib(path,"luaopen_socket")
+
+]]
+
+--错误
+--检测输入的是否为number值
+--方式1：
+print "enter a number:"
+n=io.read("*number")
+if not n then
+    error("invalid input")
+end
+
+--方式2：
+--assert函数检查第一个参数是否为true，为true则简单地返回该参数，否则就引发一个错误
+print "enter a number:"
+n=assert(io.read("*number"),"invalid input")
 
