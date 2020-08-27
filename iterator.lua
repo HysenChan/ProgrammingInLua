@@ -108,6 +108,7 @@ end
 
 ]]
 
+--[[
 --具有复杂状态的迭代器
 local iterator
 
@@ -133,4 +134,27 @@ function iterator(state)
     end
     return nil  --没有更多行了，结束循环
 end
+
+]]
+
+--真正的迭代器
+--把print当做一个参数传入使用，打印每个单词
+function allwords(foo)
+    for line in io.lines() do
+        for word in string.gmatch(line,"%w+") do
+            foo(word) --调用函数
+        end
+    end
+end
+
+-- allwords(print)
+
+local count=0
+allwords(function (w)
+    if w=="hello" then
+        count=count+1
+    end
+end)
+
+print(count)
 
