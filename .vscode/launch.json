@@ -10,7 +10,7 @@
             "request": "launch",
             "name": "Lua debug",
             "stopOnEntry": true,
-            "program": "${workspaceFolder}/compile.lua",
+            "program": "${workspaceFolder}/coroutine.lua",
             "console": "integratedTerminal",
             "outputCapture": []
         }
