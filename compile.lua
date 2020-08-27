@@ -49,6 +49,7 @@ local f=package.loadlib(path,"luaopen_socket")
 ]]
 
 --错误
+--[[
 --检测输入的是否为number值
 --方式1：
 print "enter a number:"
@@ -61,4 +62,24 @@ end
 --assert函数检查第一个参数是否为true，为true则简单地返回该参数，否则就引发一个错误
 print "enter a number:"
 n=assert(io.read("*number"),"invalid input")
+
+]]
+
+--输入文件名称，检测文件是否能打开
+--方式1：
+-- local file,msg
+-- repeat
+--     print "enter a file name"
+--     local name=io.read()
+--     if not name then
+--         return
+--     end
+--     file,msg=io.open(name,"r")
+--     if not file then
+--         print(msg)
+--     end
+-- until file
+
+--方式2：
+-- file=assert(io.open(name,"r"))
 
