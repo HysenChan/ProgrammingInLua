@@ -1,5 +1,5 @@
 --第九章——协同程序
-
+--[[
 co=coroutine.create(function () print("hi")end)
 print(co)
 print(coroutine.status(co)) --suspended
@@ -44,4 +44,48 @@ end)
 print(coroutine.status(co5))    --suspended
 print(coroutine.resume(co5))    --true  6   7
 print(coroutine.status(co5))    --dead
+
+]]
+
+--管道与过滤器
+function receive(prod)
+    local status,value=coroutine.resume(prod)
+    return value
+end
+
+function send(x)
+    coroutine.yield(x)
+end
+
+function producer()
+    return coroutine.create(function ()
+        while true do
+            local x=io.read()   --产生新值
+            send(x)
+        end
+    end)
+end
+
+function filter(prod)
+    return coroutine.create(function ()
+        for line = 1, math.huge do
+            local x=receive(prod)   --获取新值
+            x=string.format("%5d %s",line,x)
+            send(x) --将新值发给消费者
+        end
+    end)
+end
+
+function consumer(prod)
+    while true do
+        local x=receive(prod)   --获取新值
+        io.write(x,"\n")    --消费新值
+    end
+end
+
+p=producer()
+f=filter(p)
+consumer(f)
+
+--等价于consumer(filter(producer()))
 
