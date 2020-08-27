@@ -1,4 +1,5 @@
 --第七章——迭代器
+--[[
 --迭代器与closure
 
 function values(t)
@@ -46,5 +47,61 @@ end
 
 for word in allwords() do
     print(word)
+end
+
+]]
+
+--无状态的迭代器（自身不保存任何状态的迭代器，可以在多个循环中使用同一个无状态的迭代器，避免创建新的closure开销）
+--例如ipairs
+a={"one","two","three"}
+for i,v in ipairs(a) do
+    print(i,v)
+end
+
+--ipairs迭代器
+local function iter(a,i)
+    i=i+1
+    local v=a[i]
+    if v then
+        return i,v
+    end
+end
+
+function ipairs(a)
+    return iter,a,0
+end
+
+t={10,8,6,4}
+local x,y=ipairs(t)
+print(y[1])
+
+--do .. in  pairs(t) 的另一种写法
+for key, value in next,t do
+    print(key,value)
+end
+
+--遍历链表的迭代器
+local function getNext(list,node)
+    if not node then
+        return list
+    else
+        return node.next
+    end
+end
+
+function traverse(list)
+    return getNext,list,nil
+end
+
+list=nil
+for line in io.lines() do
+    list={
+        val=line,
+        next=list
+    }
+end
+
+for node in traverse(list)  do
+    print(node.val)
 end
 
