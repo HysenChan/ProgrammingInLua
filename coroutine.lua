@@ -47,6 +47,7 @@ print(coroutine.status(co5))    --dead
 
 ]]
 
+--[[
 --管道与过滤器
 function receive(prod)
     local status,value=coroutine.resume(prod)
@@ -88,4 +89,49 @@ f=filter(p)
 consumer(f)
 
 --等价于consumer(filter(producer()))
+
+]]
+
+--resume和yield的配合强大之处在于，resume处于主程中，它将外部状态（数据）传入到协同程序内部；而yield则将内部的状态（数据）返回到主程中。
+
+--协同程序实现迭代器
+function permgen(a,n)
+    n=n or #a   --默认n为a的大小
+    if n<=1 then
+        --  printResult(a)
+        coroutine.yield(a)
+    else
+        for i = 1, n do
+            --将第i个元素放到数组末尾
+            a[n],a[i]=a[i],a[n]
+            --生成其余元素的排列
+            permgen(a,n-1)
+            --恢复第i个元素
+            a[n],a[i]=a[i],a[n]
+        end
+    end
+end
+
+function printResult(a)
+    for i = 1, #a do
+        io.write(a[i]," ")
+    end
+    io.write("\n")
+end
+
+function permutations(a)
+    local co=coroutine.create(function ()
+        permgen(a)
+    end)
+    return function ()
+        local code,res=coroutine.resume(co)
+        return res
+    end
+end
+
+for p in permutations("a","b","c") do
+    printResult(p)
+end
+
+--permgen({1,2,3,4})
 
