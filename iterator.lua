@@ -51,6 +51,7 @@ end
 
 ]]
 
+--[[
 --无状态的迭代器（自身不保存任何状态的迭代器，可以在多个循环中使用同一个无状态的迭代器，避免创建新的closure开销）
 --例如ipairs
 a={"one","two","three"}
@@ -103,5 +104,33 @@ end
 
 for node in traverse(list)  do
     print(node.val)
+end
+
+]]
+
+--具有复杂状态的迭代器
+local iterator
+
+function allwords()
+    local state={
+        line=io.read(),
+        pos=1
+    }
+    return iterator,state
+end
+
+function iterator(state)
+    while state.line do --若为有效的行内容就进入循环
+        --搜索下一个单词
+        local s,e=string.find(state.line,"%w+",state.pos)
+        if s then   --找到了一个单词
+            state.pos=e+1   --更新下一个位置
+            return string.sub(state.line,s,e)
+        else
+            state.line=io.read()    --尝试下一行
+            state.pos=1 --从第一个位置开始
+        end
+    end
+    return nil  --没有更多行了，结束循环
 end
 
