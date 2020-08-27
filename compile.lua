@@ -83,3 +83,29 @@ n=assert(io.read("*number"),"invalid input")
 --方式2：
 -- file=assert(io.open(name,"r"))
 
+--自定义输出错误信息
+--[[
+local status,err=pcall(function () 
+    error({code=120})
+end)
+print(err.code) --120
+
+local status,err=pcall(function ()
+    a="a"+1
+end)
+print(err)
+
+local status,err=pcall(function ()
+    error("my error")
+end)
+print(err)
+]]
+
+function foo(str)
+    if type(str)~="string" then
+        error("string expected",2)
+    end
+end
+
+foo({x=1})
+print(debug.traceback())
