@@ -10,7 +10,7 @@
             "request": "launch",
             "name": "Lua debug",
             "stopOnEntry": true,
-            "program": "${workspaceFolder}/markovChain.lua",
+            "program": "${workspaceFolder}/dataStructure.lua",
             "console": "integratedTerminal",
             "outputCapture": []
         }
