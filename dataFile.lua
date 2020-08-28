@@ -9,7 +9,9 @@ print("number of entries:"..count)
 
 local authors={}    --作者姓名的集合
 function Entry(b)
-    authors[b[1]]=true
+    if b.author then
+        authors[b.author]=true
+    end
 end
 dofile("data.lua")
 for name in pairs(authors) do
