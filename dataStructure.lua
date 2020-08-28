@@ -107,6 +107,7 @@ List.pushLast(a,10)
 
 ]]
 
+--[[
 --集合
 --方式1：
 reserved={
@@ -139,3 +140,18 @@ function remove(bag,element)
     bag[element]=(count and count>1) and count-1 or nil
 end
 
+]]
+
+--字符串缓冲
+--Java/C#的StringBuffer
+-- local buff=""
+-- for line in io.lines() do
+--     buff=buff .. line .. "\n"
+-- end
+
+local t={}
+for line in io.lines() do
+    t[#t+1]=line
+end
+local s=table.concat(t,"\n").."\n"
+print(s)
