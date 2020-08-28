@@ -29,3 +29,6 @@
   - 4. markovChain.lua
 - **第十一章** 数据结构
   - 1. dataStructrue.lua
+- **第十二章** 数据文件
+  - 1. dataFile.lua
+  - 2. data.lua
