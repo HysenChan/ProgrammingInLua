@@ -13,7 +13,7 @@ end
 squares={1,4,9,16,25,36,49,64,81}
 print(#squares)
 ]]
-
+--[[
 --矩阵与多维数组
 --NxM的零矩阵
 --方式1：
@@ -39,5 +39,16 @@ function mult(a,rowindex,k)
     for i,v in pairs(row) do
         row[i]=v*k  --每行都乘以一个k
     end
+end
+]]
+
+--链表
+list=nil    --列表头结点的变量
+list={next=list,value=v}    --在表头插入一个元素，元素值为v
+--遍历此列表
+local l=list
+while l do
+    print(l.value)
+    l=l.next
 end
 
