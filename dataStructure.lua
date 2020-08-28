@@ -60,6 +60,7 @@ end
 --     return {first=0,last=-1}
 -- end
 
+--[[
 --方式2：
 List={}
 function List.new()
@@ -103,4 +104,38 @@ end
 a=List.new()
 List.pushFirst(a,5)
 List.pushLast(a,10)
+
+]]
+
+--集合
+--方式1：
+reserved={
+    ["while"]=true,
+    ["end"]=true,
+    ["function"]=true,
+    ["local"]=true,
+}
+
+--方式2：
+function Set(list)
+    local set={}
+    for _,l in ipairs(list) do
+        set[l]=true
+    end
+    return set
+end
+
+reserved=Set{"while","end","function","local",}
+
+--多重集合
+--插入一个元素，需要递增其计数器
+function insert(bag,element)
+    bag[element]=(bag[element] or 0)+1
+end
+
+--删除一个元素，需要递减其计数器
+function remove(bag,element)
+    local count=bag[element]
+    bag[element]=(count and count>1) and count-1 or nil
+end
 
