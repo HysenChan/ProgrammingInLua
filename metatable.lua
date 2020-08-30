@@ -141,6 +141,7 @@ print(w.width)
 --__newindex的元方法
 --用于table的更新
 
+--[[
 --具有默认值的table
 --方式1：
 function setDefault(t,d)
@@ -177,3 +178,58 @@ print(tab.x,tab.z)  --10    nil
 setDefault(tab,2)
 print(tab.x,tab.z)  --10    2
 
+]]
+
+--跟踪table的访问
+
+t={}    --原来的table
+
+--保持对原table的一个私有访问
+local _t=t
+--创建私有索引
+local index={}
+
+--创建代理
+t={}
+
+--创建元表
+local mt={
+    __index=function (t,k)
+        print("*access to element " .. tostring(k))
+        return _t[k]    --访问原来的table
+    end,
+
+    __newindex=function (t,k,v)
+        print("*update of element " .. tostring(k) .. " to " .. tostring(v))
+        _t[k]=v --更新原来的table
+    end
+}
+setmetatable(t,mt)
+
+t[2]="hello"
+--*update of element 2 to hello
+--*access to element 2
+print(t[2]) --hello
+
+
+--创建跟踪元表
+local mt={
+    __index=function (t,k)
+        print("*access to element " .. tostring(k))
+        return t[index][k]    --访问原来的table
+    end,
+
+    __newindex=function (t,k,v)
+        print("*update of element " .. tostring(k) .. " to " .. tostring(v))
+        t[index][k]=v --更新原来的table
+    end
+}
+
+function track(t)
+    local proxy={}
+    proxy[index]=t
+    setmetatable(proxy,mt)
+    return proxy
+end
+
+t=track(t)
