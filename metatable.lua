@@ -120,6 +120,8 @@ setmetatable(s4,{})
 ]]
 
 --table访问的元方法
+--[[
+--__index的元方法
 Window={}   --创建一个名字空间
 --使用默认值来创建一个原型
 Window.prototype={x=0,y=0,width=100,height=100}
@@ -134,3 +136,44 @@ Window.mt.__index=Window.prototype
 
 w=Window.new{x=10,y=20}
 print(w.width)
+]]
+
+--__newindex的元方法
+--用于table的更新
+
+--具有默认值的table
+--方式1：
+function setDefault(t,d)
+    local mt={__index=function ()
+        return d
+    end}
+    setmetatable(t,mt)
+end
+
+--方式2：
+local mt={__index=function (t)
+    return t.___
+end}
+
+function setDefault1(t,d)
+    t.___=d
+    setmetatable(t,mt)
+end
+
+--方式3
+local key={}
+local mt={__index=function (t)
+    return t[key]
+end}
+
+function setDefault2(t,d)
+    t[key]=d
+    setmetatable(t,mt)
+end
+
+--使用调试
+tab={x=10,y=20}
+print(tab.x,tab.z)  --10    nil
+setDefault(tab,2)
+print(tab.x,tab.z)  --10    2
+
