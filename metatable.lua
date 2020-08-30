@@ -1,4 +1,5 @@
 --第十三章——元表和元数据
+--[[
 --元表的基础使用
 t={}
 print(getmetatable(t))  --nil
@@ -9,7 +10,7 @@ assert(getmetatable(t)==t1)
 
 print(getmetatable("hi"))
 print(getmetatable(10))
-
+]]
 --算术类的元方法
 Set={}
 
@@ -59,14 +60,44 @@ function Set.new(l)
     return set
 end
 
+mt.__add=Set.union
+mt.__mul=Set.intersection
+--[[
 s1=Set.new{10,20,30,50}
 s2=Set.new{30,1}
 print(getmetatable(s1))
 print(getmetatable(s2))
 
-mt.__add=Set.union
-mt.__mul=Set.intersection
 
 s3=s1+s2
 Set.print(s3)    --s1和s2的并集 1,20,30,10,50
 Set.print(s3*s1)   --s3和s1的交集 20,50,30,10
+]]
+
+--关系类的元方法
+mt.__le=function (a,b)--集合包含
+    for k in pairs(a) do
+        if not b[k] then
+            return false
+        end
+    end
+    return true
+end
+
+mt.__lt=function (a,b)
+    return a<=b and not(b<=a)
+end
+
+mt.__eq=function (a,b)
+    return a<=b and b<=a
+end
+
+--比较集合
+s1=Set.new{2,4}
+s2=Set.new{4,10,2}
+print(s1<=s2)   --true
+print(s1<s2)    --true
+print(s1>=s1)   --true
+print(s1>s1)    --false
+print(s1==s2*s1)    --true
+
