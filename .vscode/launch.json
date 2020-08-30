@@ -10,7 +10,7 @@
             "request": "launch",
             "name": "Lua debug",
             "stopOnEntry": true,
-            "program": "${workspaceFolder}/dataFile.lua",
+            "program": "${workspaceFolder}/metatable.lua",
             "console": "integratedTerminal",
             "outputCapture": []
         }
