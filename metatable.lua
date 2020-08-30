@@ -11,6 +11,8 @@ assert(getmetatable(t)==t1)
 print(getmetatable("hi"))
 print(getmetatable(10))
 ]]
+
+--[[
 --算术类的元方法
 Set={}
 
@@ -75,6 +77,7 @@ Set.print(s3)    --s1和s2的并集 1,20,30,10,50
 Set.print(s3*s1)   --s3和s1的交集 20,50,30,10
 ]]
 
+--[[
 --关系类的元方法
 mt.__le=function (a,b)--集合包含
     for k in pairs(a) do
@@ -113,3 +116,23 @@ mt.__metatable="not your business"
 s4=Set.new{}
 print(getmetatable(s4)) --not your business
 setmetatable(s4,{})
+
+]]
+
+--table访问的元方法
+Window={}   --创建一个名字空间
+--使用默认值来创建一个原型
+Window.prototype={x=0,y=0,width=100,height=100}
+Window.mt={}    --创建元表
+--声明构造函数
+function Window.new(o)
+    setmetatable(o,Window.mt)
+    return o
+end
+
+Window.mt.__index=function (table,key)
+    return Window.prototype[key]
+end
+
+w=Window.new{x=10,y=20}
+print(w.width)
