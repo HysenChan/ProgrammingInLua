@@ -130,9 +130,7 @@ function Window.new(o)
     return o
 end
 
-Window.mt.__index=function (table,key)
-    return Window.prototype[key]
-end
+Window.mt.__index=Window.prototype
 
 w=Window.new{x=10,y=20}
 print(w.width)
