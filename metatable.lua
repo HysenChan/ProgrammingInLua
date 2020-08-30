@@ -62,6 +62,7 @@ end
 
 mt.__add=Set.union
 mt.__mul=Set.intersection
+mt.__tostring=Set.tostring
 --[[
 s1=Set.new{10,20,30,50}
 s2=Set.new{30,1}
@@ -101,3 +102,14 @@ print(s1>=s1)   --true
 print(s1>s1)    --false
 print(s1==s2*s1)    --true
 
+--库定义的元方法
+print({})
+
+s3=Set.new{10,20,30}
+print(s3)
+
+mt.__metatable="not your business"
+
+s4=Set.new{}
+print(getmetatable(s4)) --not your business
+setmetatable(s4,{})
